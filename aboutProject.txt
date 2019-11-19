@@ -1,0 +1,230 @@
+端口
+一台机器有1~65535个端口
+netstat –an  查看机器有哪些端口在监听
+netstat –anb  查看监听端口的程序
+通常每个套接字地址（协议、网络地址、端口）只允许使用一次
+有名端口1~1024
+
+
+输入url回车
+1、dns(域名服务器)解析域名，通过ip找到服务器
+2、建立连接
+3、发送http请求
+4、服务器返回请求结果
+5、浏览器解析返回的文件
+
+PHP语法
+<?php
+	echo “hello world”;
+?>
+
+如果只是为了显示一个变量,输出$i变量的值
+<?=$i?>
+
+注释方法：
+// 注释单行
+# 注释单行
+/*   */  注释多行
+
+基本数据类型：
+整型
+小数型（浮动数）抱哈单精度和双精度
+布尔型
+
+复合数据类型
+数组
+对象
+
+特殊数据类型
+null
+资源类型(resource)
+
+循环相关：
+for  while  do while  switch
+
+goto语句 将程序跳转到指定的地方去执行
+goto a;
+echo ‘aa’;
+a: 
+echo ‘bb’;
+
+常量
+使用define()函数定义，不能通过赋值语句定义
+define(‘a’,1);
+const a = 1;
+
+
+函数
+函数名不区分大小写
+function(参数列表) {
+	函数体
+	Return
+}
+function  func($i,$j) {
+	$k = $i + $j;
+	echo $k;
+	return $k;
+}
+
+请求文件：
+ require ‘func.php’;
+
+$fileName=’func.php’;
+Require $fileName;
+
+require (func.php);
+
+require 和require_once,
+require出错则退出程序，require_once 相同的文件只引入一次,若require的文件中有声明函数，则多次引用会导致redeclare错误
+
+include  include_once
+把一个页面包含到另一个页面
+<?php
+  include ('被包含的文件’);
+include ‘被包含的文件’;
+include $filePath;
+?>
+区别同require
+
+Require 和 include的区别：require出错程序终止，include出错不影响后续程序执行
+
+先引用文件，再调用文件中函数
+
+位运算
+正数原码补码反码都一样
+负数，反码为符号位不变，其他位取反，补码为反码加一，
+所有数的补码参与运算
+
+与&  或|  非~  异或^   （不一样取1）
+
+数组
+$arr = array(1,2,3,4
+)
+$arr = [0,1,2,3,4,5];
+echo count($arr);   //6
+
+$arr = array(‘logo’=>’北京’, ‘name’=>112)
+
+php面向对象编程
+对象 & 类
+class Person{
+	public $name;
+public $age;
+public $gender;
+}
+
+$p1 = new Person();
+$p1->name=”Lee”;
+$p1->age=18;
+$p1->gender=”man”;
+
+
+$p2 = new Person;
+$p2->weight=”60kg”;
+
+对象和js中一样，按地址传递，
+
+成员方法
+Class  Abc{
+	Public function func($n) {
+		Echo ‘$n’;
+}
+}
+
+$abc1 = new Abc();
+$abc1->func(5); //调用Abc中的func
+
+Class  类名{
+	成员属性；
+成员方法；
+构造方法；
+析构方法
+}
+面向对象
+view.php  该文件中输入数据并提交<form action=’class.php’ method=’post’></form>
+
+Class.php  该文件定义要使用的类
+
+Work.php第三个文件 接收数据并调用定义的类中的方法，使用require引入类文件，使用$_REQUEST[‘$n’]获取view文件传输过来的数据
+
+使用隐藏域 <input type=”hidden”>
+
+$this  谁调用this指向谁
+
+面向对象编程—析构方法
+主要用于释放资源回收内存
+
+静态变量&静态方法（类方法）
+Public static $name;
+
+类中访问：  self::$name;
+类外访问：  className::$name
+其它方式比如this不能访问到
+
+$name是静态变量
+
+
+静态方法：
+Class student{
+Public static $name=”yi”;
+Public static function() {
+	Echo self::$name;
+}
+}
+
+一般使用静态方法访问静态变量
+不能使用this访问静态变量
+
+不能使用静态方法访问非静态变量
+
+非静态方法可以访问静态变量和静态方法
+
+静态变量：需要所有方法共享时使用
+静态方法：只用来操作静态变量
+静态方法可通过 类名：：类方法名 来访问
+
+面向对象编程三大特征：封装 继承  多态
+抽象
+
+Public 表示全局 可以类内部外部子类中访问
+Protected  只有类内部 或者子类可以访问
+Private 只有类内部可以访问
+
+继承
+Class  Stu{
+}
+
+Class Pupil extent Stu{
+}
+
+子类通过extend把父类public protected属性和public protected方法继承下来
+
+抽象类 抽象方法
+
+用abstract修饰
+抽象方法不能实现，不能包含body体，即不能有大括号
+抽象类不能被实例化
+抽象类可以不包含抽象方法
+包含抽象方法的类必须是抽象类，也就是必须带abstract
+
+
+接口
+
+Final修饰符，类不被继承，方法不被覆盖,不能修饰属性
+
+Final class{}
+
+Final public function(){}
+
+处理错误
+
+Die()
+If(!file_exist(‘a.txt’)) {
+	Die(‘not exist’);
+}else{
+	//其他操作
+}
+Echo ‘ok’;
+
+
+File_exist(‘a.txt’) or die(‘not exist’);
